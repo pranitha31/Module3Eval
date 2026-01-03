@@ -10,11 +10,23 @@ const Dashboard=()=>{
 
     return(
         <div>
-            {role== 'admin' && <AddRestaurant />}
-            {restaurants.map((restaurant)=>(
-                <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+            {role== 'admin' && (
+                <div>
+                    <h2>Admin Dashboard</h2>
+                    <AddRestaurant />
+                    <h3>Restaurant List</h3>
+                    {restaurants.map((restaurant)=>(
+                    <RestaurantCard key={restaurant.id} restaurant={restaurant} />
             ))}
         </div>
+        {role === 'customer' && (
+            <div>
+                <h2>Customer Dashboard</h2>
+                {restaurants.map((restaurants))=>(
+                    <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+                )}
+            </div>
+        )}
     );
 };
 export default Dashboard;
